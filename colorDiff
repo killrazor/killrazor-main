@@ -1,0 +1,56 @@
+#!/bin/bash
+#version 1.0
+
+# SETUP VARIABLES
+
+# Edit here to set the your repo server host name ( you can find this by typing "hostname" into the console ).
+myHost="myRepoServer"
+
+# Edit your repo path here mine is "/u/sources/local/bin" so I would just use "sources". Assumes you are using /u/local/bin
+#	as your main coding directory and that your repo directory name is appended before local like mine above.
+repoPath="myRepoPath"
+
+# Production server host name. This should be a name that you can use to ssh as the user below.
+productionHost="myProdServer"
+
+# Production server code path
+productionPath="myProdPath"
+
+# User that has ssh access and that you have sudo access to ssh.
+user="mySSHUser"
+
+dir=$(pwd)
+dir2=$dir
+
+if [ "$(hostname | tr '.' ' ' | awk '{print $1}')" = "$myHost" ]
+then
+        if [ -z "$2" ] && [ "$(echo "$dir" | tr '/' ' ' | awk '{print $2}')" = "$repoPath" ]
+        then
+                dir2=$(echo "$dir" | sed 's/\/u\/"$repoPath"\//\/u\//')/$1
+        elif [ -z "$2" ] && [ "$(echo "$dir" | tr '/' ' ' | awk '{print $2}')" = "$productionPath" ]
+        then
+                sudo -u "$user" ssh "$productionHost" cat "$dir/$1" | diff -wu - "$1" | vim -R -
+                exit
+        elif [ -z "$2" ]
+        then
+                exit
+        fi
+fi
+
+# So you can include absolute paths in both inputs ( or not ).
+if [ "${1:0:1}" = "/" ]
+then
+        dir=$1
+else
+        dir="$dir/$1"
+fi
+
+if [ "${2:0:1}" = "/" ]
+then
+        dir2=$2
+elif [ ! -z "$2" ]
+then
+        dir2="$dir2/$2"
+fi
+
+diff -wu "$dir2" "$dir" | vim -R -
