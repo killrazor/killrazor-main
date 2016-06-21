@@ -1,0 +1,16 @@
+[user]
+        name = Tyler Christian
+        email = tyler.christian@trizetto.com
+[color]
+        status = auto
+        branch = auto
+	ui = true
+[color "diff"]
+	meta = cyan
+        frag = yellow bold
+        old = red
+        new = magenta bold
+        context = normal
+        func = normal
+        whitespace = green
+	plain = green bold
