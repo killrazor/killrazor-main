@@ -1,3 +1,46 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+	 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        	<span class="navbar-toggler-icon"></span>
+     	</button>
+	<span class="navbar-brand">Killrazor.portfolio</span>
+
+<!--	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+ I don't have any content to search at this time		
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+
+	</div>
+	-->
+</nav>
+<ngb-carousel>
+	<template ngbSlide>
+		<img class="img-responsive" src="http://lorempixel.com/900/500?r=1" alt="Random first slide">
+		<div class="carousel-caption">
+			<h3>First slide label</h3>
+			<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+		</div>
+	</template>
+	<template ngbSlide>
+		<img class="img-responsive" src="http://lorempixel.com/900/500?r=2" alt="Random second slide">
+		<div class="carousel-caption">
+			<h3>Second slide label</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</div>
+	</template>
+	<template ngbSlide>
+		<img class="img-responsive" src="http://lorempixel.com/900/500?r=3" alt="Random third slide">
+		<div class="carousel-caption">
+			<h3>Third slide label</h3>
+			<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+		</div>
+	</template>
+</ngb-carousel>
