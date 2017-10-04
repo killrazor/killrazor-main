@@ -4,6 +4,10 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 require_once "${path}/php/configs/db_config.php";
 require_once "${path}/php/utils/helpers.php";
 
+if ( $_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['action']) ) {
+	exit;
+}	
+
 /* NOTES:
  * 	These functions are to be accessed via POST data commonly by jQuery AJAX.
  */
@@ -24,6 +28,7 @@ if ( file_exists( '/u/system_test_flag' ) ) {
 }
 
 $mock_global = ( empty( $_POST['mock_var'] ) )	? false	: $_POST['mock_var'];
+
 
 switch ( $_POST['action'] ) {
 	case "mockCallWithParm"	: someOtherName( "some_parm" );	break;
