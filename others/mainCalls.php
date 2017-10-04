@@ -31,8 +31,8 @@ $mock_global = ( empty( $_POST['mock_var'] ) )	? false	: $_POST['mock_var'];
 
 
 switch ( $_POST['action'] ) {
-	case "mockCallWithParm"	: someOtherName( "some_parm" );	break;
-	case "mockCall"		: moreOfTheSame();		break;
+	case "mockCallWithParm"	: some_other_name( "some_parm" );	break;
+	case "mockCall"		: more_of_the_same();			break;
 }
 
 
@@ -42,7 +42,7 @@ switch ( $_POST['action'] ) {
 
 
 // mock function that does nothing
-function someOtherName($param) {
+function some_other_name($param) {
 	global $db_conn, $inTest;
 	echo jsonEncodeSelect( "
 		SELECT Count(*)
@@ -51,8 +51,8 @@ function someOtherName($param) {
 	", $db_conn );
 }
 
-// returns weighted average turn-around time and notes for each dest to be loaded into hover info in the TDs.
-function moreOfTheSame() {
+// mock function with no parm
+function more_of_the_same() {
 	global $db_conn, $inTest;
 	echo jsonEncodeSelect( "
 		SELECT ds.*,
